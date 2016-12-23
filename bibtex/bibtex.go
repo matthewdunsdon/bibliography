@@ -1,3 +1,4 @@
+// Package bibtex implements encoding of BibTeX.
 package bibtex
 
 import (
@@ -6,7 +7,7 @@ import (
 	"github.com/matthewdunsdon/bibliography"
 )
 
-// Entry represents the data associated with a bibtex entry
+// Entry represents the data needed to describe an entry in a BibTeX file
 type Entry struct {
 	CitationKey      string
 	EntryType        string

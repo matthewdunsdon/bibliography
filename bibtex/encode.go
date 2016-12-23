@@ -5,13 +5,13 @@ import (
 	"io"
 )
 
-// An Encoder writes BiBTeX to an output stream
+// An Encoder writes BibTeX to an output stream
 type Encoder struct {
 	writer io.Writer
 	err    error
 }
 
-// Encode writes the BiBTeX encoding of entry to the stream,
+// Encode writes the BibTeX encoding of entry to the stream,
 func (enc *Encoder) Encode(entry Entry) (err error) {
 	if enc.err != nil {
 		return enc.err
