@@ -17,10 +17,13 @@ func TestWriteFieldsFromEntryWithBookAndIsbn(t *testing.T) {
 	want := ",\n  author = {Kyle Rankin},\n  title = {DevOps Troubleshooting: Linux Server Best Practices},\n  year = {2012},\n  isbn = {9780321832047}"
 
 	var writer bytes.Buffer
-	writeFieldsFromEntry(&writer, entry, additionalFields)
+	err := writeFieldsFromEntry(&writer, entry, additionalFields)
 	got := writer.String()
+	if err != nil {
+		t.Errorf("Expected fields to be written to the writer without an error, got %v", err)
+	}
 	if got != want {
-		t.Errorf("Expected to write proper test = %q, got %q", want, got)
+		t.Errorf("Expected the following text to be written to the writer %q, got %q", want, got)
 	}
 }
 
@@ -56,7 +59,7 @@ func TestWriteFieldsFromEntryAllFields(t *testing.T) {
 	var additionalFields map[string]string
 	var writer bytes.Buffer
 
-	writeFieldsFromEntry(&writer, entry, additionalFields)
+	err := writeFieldsFromEntry(&writer, entry, additionalFields)
 
 	want := `,
   address = {City, Country},
@@ -82,7 +85,10 @@ func TestWriteFieldsFromEntryAllFields(t *testing.T) {
   volume = {From the Volume: II},
   year = {2016}`
 	got := writer.String()
+	if err != nil {
+		t.Errorf("Expected fields to be written to the writer without an error, got %v", err)
+	}
 	if got != want {
-		t.Errorf("Expected to write proper test = %q, got %q", want, got)
+		t.Errorf("Expected the following text to be written to the writer %q, got %q", want, got)
 	}
 }
