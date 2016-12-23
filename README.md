@@ -8,6 +8,7 @@ decoders for common textual formats.
 The main features are:
 
 * It defines a `bibliography.Entry` type with the common [BibTeX field types](https://en.wikipedia.org/wiki/BibTeX#Field_types)
+* It provides basic BibTeX encoding for `bibliography.Entry` and any supplied additional fields
 
 ---
 
