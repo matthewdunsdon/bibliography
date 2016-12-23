@@ -20,12 +20,15 @@ func TestEncode(t *testing.T) {
 
 	var buffer bytes.Buffer
 	encoder := &Encoder{writer: &buffer}
-	encoder.Encode(entry)
+	err := encoder.Encode(entry)
 
 	want := "@book{devOpsTroubleshooting,\n  author = {Kyle Rankin},\n  title = {DevOps Troubleshooting: Linux Server Best Practices},\n  year = {2012},\n  isbn = {9780321832047}\n}\n"
 	got := buffer.String()
+	if err != nil {
+		t.Errorf("Expected entry to be encoded without an error, got %v", err)
+	}
 	if got != want {
-		t.Errorf("Expected to write proper test = %q, got %q", want, got)
+		t.Errorf("Expected the following text to be written to the writer %q, got %q", want, got)
 	}
 }
 
