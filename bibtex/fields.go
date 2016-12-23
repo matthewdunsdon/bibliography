@@ -8,7 +8,7 @@ import (
 	"github.com/matthewdunsdon/bibliography"
 )
 
-// writeFieldsFromEntry will write the contents of an entry and any additionalFields fields in a bibtex field format to a writer.
+// writeFieldsFromEntry will write the contents of an entry and any additionalFields fields in a BibTeX field format to a writer.
 // To avoid the overhead of using reflection at run-time, each property is explicitly checked and if present is written to the stream.
 // Further investigation into "go generate" is needed as it could move the overhead to compile-time and allow the code to be generated automatically.
 func writeFieldsFromEntry(writer io.Writer, entry bibliography.Entry, additionalFields map[string]string) (err error) {
