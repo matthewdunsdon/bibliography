@@ -1,6 +1,7 @@
 # matthewdunsdon/bibliography
 [![GoDoc](https://godoc.org/github.com/matthewdunsdon/bibliography?status.svg)](https://godoc.org/github.com/matthewdunsdon/bibliography)
 [![Build Status](https://travis-ci.org/matthewdunsdon/bibliography.svg?branch=master)](https://travis-ci.org/matthewdunsdon/bibliography)
+[![Go Report Card](https://goreportcard.com/badge/github.com/matthewdunsdon/bibliography)](https://goreportcard.com/report/github.com/matthewdunsdon/bibliography)
 
 Package `matthewdunsdon/bibliography` implements bibliography encoders and
 decoders for common textual formats.
