@@ -1,6 +1,7 @@
 # matthewdunsdon/bibliography
 [![GoDoc](https://godoc.org/github.com/matthewdunsdon/bibliography?status.svg)](https://godoc.org/github.com/matthewdunsdon/bibliography)
 [![Build Status](https://travis-ci.org/matthewdunsdon/bibliography.svg?branch=master)](https://travis-ci.org/matthewdunsdon/bibliography)
+[![Coverage Status](https://coveralls.io/repos/github/matthewdunsdon/bibliography/badge.svg?branch=master)](https://coveralls.io/github/matthewdunsdon/bibliography?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/matthewdunsdon/bibliography)](https://goreportcard.com/report/github.com/matthewdunsdon/bibliography)
 
 Package `matthewdunsdon/bibliography` implements bibliography encoders and
