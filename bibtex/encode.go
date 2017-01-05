@@ -5,24 +5,42 @@ import (
 	"io"
 )
 
-// An Encoder writes BibTeX to an output stream
+// An Encoder writes BibTeX to an output stream.
 type Encoder struct {
 	writer io.Writer
 	err    error
 }
 
-// Encode writes the BibTeX encoding of entry to the stream,
-func (enc *Encoder) Encode(entry Entry) (err error) {
-	if enc.err != nil {
-		return enc.err
+// NewEncoder returns a new encoder that writes to writer.
+func NewEncoder(writer io.Writer) (encoder *Encoder) {
+	encoder = &Encoder{writer: writer}
+	return
+}
+
+// Encodable is the interface describing
+type Encodable interface {
+	EncodeBibTeX(io.Writer) error
+}
+
+// EncodeBibTeX writes the BibTeX encoding of entry to the stream.
+func (e *Encoder) EncodeBibTeX(entry Encodable) error {
+	if e.err != nil {
+		return e.err
 	}
 
-	_, err = fmt.Fprintf(enc.writer, "@%s{%s", entry.EntryType, entry.CitationKey)
-	if err == nil {
-		err = writeFieldsFromEntry(enc.writer, entry.Entry, entry.AdditionalFields)
+	e.err = entry.EncodeBibTeX(e.writer)
+	return e.err
+}
+
+// Encode writes the BibTeX encoding of entry to the stream.
+func (e *Encoder) Encode(v interface{}) error {
+	if e.err != nil {
+		return e.err
 	}
-	if err == nil {
-		_, err = fmt.Fprint(enc.writer, "\n}\n")
+
+	if entry, ok := v.(Encodable); ok {
+		return e.EncodeBibTeX(entry)
 	}
-	return
+
+	return fmt.Errorf("bibtex encoding not available for type %T", v)
 }
